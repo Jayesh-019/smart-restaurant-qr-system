@@ -5,10 +5,21 @@ const CUSTOMER_ORDER_KEY = "srqs_customer_order";
 document.addEventListener("DOMContentLoaded", () => {
     const path = window.location.pathname;
 
-    if (path.includes("select_table")) initSelectTablePage();
-    if (path.includes("menu")) initMenuPage();
-    if (path.includes("cart")) initCartPage();
-    if (path.includes("order_status")) initOrderStatusPage();
+    if (path === "/customer" || path.includes("select_table")) {
+        initSelectTablePage();
+    }
+
+    if (path.includes("menu")) {
+        initMenuPage();
+    }
+
+    if (path.includes("cart")) {
+        initCartPage();
+    }
+
+    if (path.includes("order_status")) {
+        initOrderStatusPage();
+    }
 });
 
 function getCustomerContext() {
