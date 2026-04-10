@@ -4,8 +4,7 @@ VALUES
     ('T2', 'table-token-t2', 4, TRUE),
     ('T3', 'table-token-t3', 6, TRUE),
     ('T4', 'table-token-t4', 2, TRUE),
-    ('T5', 'table-token-t5', 4, TRUE)
-ON CONFLICT (table_number) DO NOTHING;
+    ('T5', 'table-token-t5', 4, TRUE);
 
 INSERT INTO menu_items (name, description, category, price, image_url, is_available)
 VALUES
@@ -16,5 +15,4 @@ VALUES
     ('Margherita Pizza', 'Classic cheese pizza', 'main_course', 320.00, NULL, TRUE),
     ('Fresh Lime Soda', 'Refreshing sweet and salted soda', 'beverage', 80.00, NULL, TRUE),
     ('Cold Coffee', 'Chilled coffee with milk', 'beverage', 110.00, NULL, TRUE),
-    ('Brownie with Ice Cream', 'Warm brownie served with vanilla ice cream', 'dessert', 150.00, NULL, TRUE)
-ON CONFLICT (name) DO NOTHING;
+    ('Brownie with Ice Cream', 'Warm brownie served with vanilla ice cream', 'dessert', 150.00, NULL, TRUE);

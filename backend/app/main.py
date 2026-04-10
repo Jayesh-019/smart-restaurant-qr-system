@@ -50,27 +50,41 @@ async def on_startup() -> None:
 async def root() -> RedirectResponse:
     return RedirectResponse(url="/customer")
 
-
 @app.get("/customer", include_in_schema=False)
 async def customer_page(request: Request):
-    return templates.TemplateResponse("customer/index.html", {"request": request})
+    return templates.TemplateResponse(request, "customer/select_table.html")
+
+
+@app.get("/customer/select_table", include_in_schema=False)
+async def customer_select_table_page(request: Request):
+    return templates.TemplateResponse(request, "customer/select_table.html")
+
+
+@app.get("/customer/menu", include_in_schema=False)
+async def customer_menu_page(request: Request):
+    return templates.TemplateResponse(request, "customer/menu.html")
+
+
+@app.get("/customer/cart", include_in_schema=False)
+async def customer_cart_page(request: Request):
+    return templates.TemplateResponse(request, "customer/cart.html")
+
+
+@app.get("/customer/order_status", include_in_schema=False)
+async def customer_order_status_page(request: Request):
+    return templates.TemplateResponse(request, "customer/order_status.html")
 
 
 @app.get("/kitchen", include_in_schema=False)
 async def kitchen_page(request: Request):
-    return templates.TemplateResponse("kitchen/dashboard.html", {"request": request})
+    return templates.TemplateResponse(request, "kitchen/kitchen_dashboard.html")
 
 
 @app.get("/cashier", include_in_schema=False)
 async def cashier_page(request: Request):
-    return templates.TemplateResponse("cashier/dashboard.html", {"request": request})
+    return templates.TemplateResponse(request, "cashier/cashier_dashboard.html")
 
 
 @app.get("/admin", include_in_schema=False)
 async def admin_page(request: Request):
-    return templates.TemplateResponse("admin/dashboard.html", {"request": request})
-
-
-@app.get("/health")
-async def health_check() -> dict:
-    return {"status": "ok", "service": settings.app_name}
+    return templates.TemplateResponse(request, "admin/admin_dashboard.html")
