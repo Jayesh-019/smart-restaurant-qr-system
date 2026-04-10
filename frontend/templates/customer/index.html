@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Menu | Smart Restaurant QR System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-1">Customer Ordering</h1>
+                <p class="text-muted mb-0">Scan QR, select table, browse menu, and place your order.</p>
+            </div>
+            <span class="badge bg-dark px-3 py-2" id="current-table-label">No table selected</span>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-5">
+                                <label class="form-label">Select Table</label>
+                                <select id="table-select" class="form-select"></select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Customer Name</label>
+                                <input id="customer-name" class="form-control" placeholder="Optional">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Phone</label>
+                                <input id="customer-phone" class="form-control" placeholder="Optional">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="menu-list"></div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-body">
+                        <h2 class="h5">Your Cart</h2>
+                        <div id="cart-items" class="mb-3"></div>
+
+                        <div class="border-top pt-3 mb-3">
+                            <div class="d-flex justify-content-between">
+                                <span>Subtotal</span>
+                                <strong id="cart-subtotal">0.00</strong>
+                            </div>
+                        </div>
+
+                        <label class="form-label">Order Notes</label>
+                        <textarea id="order-notes" class="form-control mb-3" rows="3" placeholder="Any special instructions?"></textarea>
+
+                        <button id="place-order-btn" class="btn btn-primary w-100">Place Order</button>
+
+                        <div id="order-status-box" class="alert alert-info mt-3 d-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/customer.js"></script>
+</body>
+</html>

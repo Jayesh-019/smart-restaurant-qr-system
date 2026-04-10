@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Smart Restaurant QR System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="dashboard-shell">
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <aside class="col-lg-3 sidebar-panel">
+                <div class="p-4">
+                    <span class="eyebrow">Admin Panel</span>
+                    <h1 class="h3 fw-bold mt-2">Control Center</h1>
+                    <p class="text-soft">Manage menu items, table QR access, and key business analytics.</p>
+
+                    <div class="glass-card p-4 mt-4" id="admin-login-card">
+                        <h2 class="h5 fw-bold mb-3">Admin Login</h2>
+                        <div class="mb-3">
+                            <input id="login-email" class="form-control" value="admin@restaurant.local" placeholder="Email">
+                        </div>
+                        <div class="mb-3">
+                            <input id="login-password" type="password" class="form-control" value="Admin@123" placeholder="Password">
+                        </div>
+                        <button id="login-btn" class="btn btn-primary w-100">Login</button>
+                    </div>
+
+                    <div class="glass-card p-4 mt-4 d-none" id="admin-side-card">
+                        <div class="small text-uppercase text-soft mb-2">System</div>
+                        <div class="h5 fw-bold mb-1">Management Active</div>
+                        <p class="text-soft small mb-3">Use the controls to update menu items and generate table QR codes.</p>
+                        <button id="logout-btn" class="btn btn-outline-light w-100">Logout</button>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="col-lg-9 content-panel">
+                <div class="p-4 p-lg-5">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <span class="eyebrow">Overview</span>
+                            <h2 class="fw-bold mb-1">Restaurant performance and menu controls</h2>
+                            <p class="text-soft mb-0">Track live metrics and keep the digital menu current.</p>
+                        </div>
+                    </div>
+
+                    <div id="admin-alert"></div>
+                    <div class="row g-4 mb-4" id="analytics-cards"></div>
+
+                    <div class="row g-4">
+                        <div class="col-lg-5">
+                            <div class="glass-card p-4 mb-4">
+                                <h3 class="h5 fw-bold mb-3">Menu Item Editor</h3>
+                                <input type="hidden" id="menu-item-id">
+
+                                <div class="mb-3">
+                                    <label class="form-label">Name</label>
+                                    <input id="menu-name" class="form-control">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Description</label>
+                                    <textarea id="menu-description" class="form-control" rows="3"></textarea>
+                                </div>
+
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Category</label>
+                                        <select id="menu-category" class="form-select">
+                                            <option value="starter">Starter</option>
+                                            <option value="main_course">Main Course</option>
+                                            <option value="beverage">Beverage</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Price</label>
+                                        <input id="menu-price" type="number" step="0.01" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <label class="form-label">Image URL</label>
+                                    <input id="menu-image-url" class="form-control">
+                                </div>
+
+                                <div class="form-check mt-3">
+                                    <input id="menu-available" class="form-check-input" type="checkbox" checked>
+                                    <label class="form-check-label" for="menu-available">Available</label>
+                                </div>
+
+                                <div class="d-flex gap-2 mt-4">
+                                    <button id="save-menu-btn" class="btn btn-primary flex-fill">Save Item</button>
+                                    <button id="reset-menu-btn" class="btn btn-outline-light flex-fill">Reset</button>
+                                </div>
+                            </div>
+
+                            <div class="glass-card p-4">
+                                <h3 class="h5 fw-bold mb-3">Generate Table QR</h3>
+                                <div class="input-group">
+                                    <input id="qr-table-id" class="form-control" placeholder="Enter Table ID">
+                                    <button id="load-qr-btn" class="btn btn-primary">Generate</button>
+                                </div>
+                                <div id="qr-output" class="mt-4"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7">
+                            <div class="glass-card p-4 h-100">
+                                <h3 class="h5 fw-bold mb-3">Menu Catalog</h3>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-hover align-middle custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Category</th>
+                                                <th>Price</th>
+                                                <th>Status</th>
+                                                <th class="text-end">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="menu-table-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>
