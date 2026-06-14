@@ -1,3 +1,6 @@
+<img width="1918" height="907" alt="Screenshot 2026-06-14 122759" src="https://github.com/user-attachments/assets/8688f0d3-5d11-4854-832f-0bd5aeed9659" />
+<img width="1918" height="907" alt="Screenshot 2026-06-14 122759" src="https://github.com/user-attachments/assets/562e5737-56c1-4ea0-a1b4-af1acf9ecde5" />
+<img width="1918" height="907" alt="Screenshot 2026-06-14 122759" src="https://github.com/user-attachments/assets/d536145f-7172-462d-b470-bdb16c01ca13" />
 # Smart Restaurant QR System
 
 A premium QR-based restaurant ordering platform built with FastAPI, PostgreSQL, SQLAlchemy, and a modern Bootstrap frontend.
