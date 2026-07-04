@@ -21,7 +21,6 @@ A premium QR-based restaurant ordering platform built with FastAPI, PostgreSQL, 
 
 ## Screenshots
 
-Replace these with your own images.
 
 ### Customer Flow
 <img width="1918" height="913" alt="Screenshot 2026-06-14 121244" src="https://github.com/user-attachments/assets/fba86d71-d1bf-4d9c-9c62-a5364881a33a" />
